@@ -20,24 +20,30 @@ export class MenuSidebarComponent implements OnInit {
 export const MENU = [
     {
         name: 'Dashboard',
-        path: ['/']
+        path: ['/'],
+        icon: 'nav-icon fas fa-tachometer-alt'
     },
     {
-        name: 'Blank',
-        path: ['/blank']
-    },
-    {
-        name: 'Main Menu',
+        name: 'Accounts',
+        icon: 'fas fa-wallet',
         children: [
             {
-                name: 'Sub Menu',
-                path: ['/sub-menu-1']
+                name: 'Incoming',
+                path: ['/sub-menu-1'],
+                icon: 'far fa-money-bill-alt'
+
             },
 
             {
-                name: 'Blank',
-                path: ['/sub-menu-2']
+                name: 'Outgoing',
+                path: ['/sub-menu-2'],
+                icon: 'fas fa-money-check-alt'
             }
         ]
-    }
+    },
+    {
+      name: 'Profile',
+      path: ['/profile'],
+      icon: 'far fa-address-card'
+  },
 ];
