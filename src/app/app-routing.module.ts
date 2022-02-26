@@ -15,64 +15,103 @@ import {MainMenuComponent} from '@pages/main-menu/main-menu.component';
 import {SubMenuComponent} from '@pages/main-menu/sub-menu/sub-menu.component';
 
 const routes: Routes = [
-    {
+  {
+    path: '',
+    component: MainComponent,
+    canActivate: [AuthGuard],
+    canActivateChild: [AuthGuard],
+    children: [
+      {
+        path: 'profile',
+        component: ProfileComponent,
+      },
+      {
+        path: 'blank',
+        component: BlankComponent,
+      },
+      {
+        path: 'sub-menu-1',
+        component: SubMenuComponent,
+      },
+      {
+        path: 'sub-menu-2',
+        component: BlankComponent,
+      },
+      {
         path: '',
-        component: MainComponent,
-        canActivate: [AuthGuard],
-        canActivateChild: [AuthGuard],
-        children: [
-            {
-                path: 'profile',
-                component: ProfileComponent
-            },
-            {
-                path: 'blank',
-                component: BlankComponent
-            },
-            {
-                path: 'sub-menu-1',
-                component: SubMenuComponent
-            },
-            {
-                path: 'sub-menu-2',
-                component: BlankComponent
-            },
-            {
-                path: '',
-                component: DashboardComponent
-            }
-        ]
-    },
-    {
-        path: 'login',
-        component: LoginComponent,
-        canActivate: [NonAuthGuard]
-    },
-    {
-        path: 'register',
-        component: RegisterComponent,
-        canActivate: [NonAuthGuard]
-    },
-    {
-        path: 'forgot-password',
-        component: ForgotPasswordComponent,
-        canActivate: [NonAuthGuard]
-    },
-    {
-        path: 'recover-password',
-        component: RecoverPasswordComponent,
-        canActivate: [NonAuthGuard]
-    },
-    {
-        path: 'privacy-policy',
-        component: PrivacyPolicyComponent,
-        canActivate: [NonAuthGuard]
-    },
-    {path: '**', redirectTo: ''}
+        component: DashboardComponent,
+      },
+      {
+        path: 'family-calendar',
+        loadChildren: () =>
+          import('../app/modules/family-calendar/family-calendar.module').then(
+            (m) => m.FamilyCalendarModule,
+          ),
+      },
+      {
+        path: 'grocery-list',
+        loadChildren: () =>
+          import('../app/modules/grocery-list/grocery-list.module').then(
+            (m) => m.GroceryListModule,
+          ),
+      },
+      {
+        path: 'to-dos',
+        loadChildren: () =>
+          import('../app/modules/to-dos/to-dos.module').then(
+            (m) => m.ToDosModule,
+          ),
+      },
+      {
+        path: 'medical',
+        loadChildren: () =>
+          import('../app/modules/medical/medical.module').then(
+            (m) => m.MedicalModule,
+          ),
+      },
+      {
+        path: 'reminders',
+        loadChildren: () =>
+          import('../app/modules/reminders/reminders.module').then(
+            (m) => m.RemindersModule,
+          ),
+      },
+    ],
+  },
+  {
+    path: 'login',
+    component: LoginComponent,
+    canActivate: [NonAuthGuard],
+  },
+  {
+    path: 'register',
+    component: RegisterComponent,
+    canActivate: [NonAuthGuard],
+  },
+  {
+    path: 'forgot-password',
+    component: ForgotPasswordComponent,
+    canActivate: [NonAuthGuard],
+  },
+  {
+    path: 'recover-password',
+    component: RecoverPasswordComponent,
+    canActivate: [NonAuthGuard],
+  },
+  {
+    path: 'privacy-policy',
+    component: PrivacyPolicyComponent,
+    canActivate: [NonAuthGuard],
+  },
+  // {
+  //     path: 'family-calendar',
+  //     loadChildren: () => import('../app/modules/family-calendar/family-calendar.module').then(m => m.FamilyCalendarModule),
+  // },
+  {path: '**', redirectTo: ''},
 ];
 
 @NgModule({
-    imports: [RouterModule.forRoot(routes, {relativeLinkResolution: 'legacy'})],
-    exports: [RouterModule]
+  imports: [RouterModule.forRoot(routes, {relativeLinkResolution: 'legacy'})],
+  exports: [RouterModule],
 })
 export class AppRoutingModule {}

@@ -1,0 +1,33 @@
+<div class="container px-4 gx-5">
+  <header class="py-3 mb-4 border-bottom">
+    <div class="container d-flex flex-wrap justify-content-center">
+      <span class="fs-4">Setup Reminders</span>
+      <form class="col-12 col-lg-auto mb-3 mb-lg-0">
+        <input
+          type="search"
+          class="form-control"
+          placeholder="Search..."
+          aria-label="Search"
+        />
+      </form>
+    </div>
+  </header>
+  <p-table [value]="reminders">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Reminder</th>
+        <th>To</th>
+        <th>Email</th>
+        <th>Date</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-reminder>
+      <tr>
+        <td>{{ reminder.reminder }}</td>
+        <td>{{ reminder.to }}</td>
+        <td>{{ reminder.email }}</td>
+        <td>{{ reminder.date }}</td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>
