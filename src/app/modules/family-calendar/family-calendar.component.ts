@@ -13,13 +13,17 @@ export class FamilyCalendarComponent implements OnInit {
   options: CalendarOptions;
 
   header: any;
-  a;
   constructor() {}
 
   ngOnInit() {
     this.options = {
+      themeSystem: 'bootstrap5',
       initialDate: '2022-02-22',
       initialView: 'dayGridMonth',
+      buttonIcons: {
+        prev: 'chevron-left',
+        next: 'chevron-right',
+      },
       headerToolbar: {
         left: 'prev,next today',
         center: 'title',

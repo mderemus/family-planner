@@ -63,10 +63,10 @@ const routes: Routes = [
           ),
       },
       {
-        path: 'medical',
+        path: 'wellness',
         loadChildren: () =>
-          import('../app/modules/medical/medical.module').then(
-            (m) => m.MedicalModule,
+          import('./modules/wellness/wellness.module').then(
+            (m) => m.WellnessModule,
           ),
       },
       {

@@ -51,8 +51,8 @@ export const MENU = [
     ],
   },
   {
-    name: 'Medical',
-    path: ['/medical'],
+    name: 'Wellness',
+    path: ['/wellness'],
     icon: 'fas fa-file-prescription',
   },
   {

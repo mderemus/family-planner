@@ -1,12 +1,12 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 import {NonAuthGuard} from '@guards/non-auth.guard';
-import {MedicalComponent} from './medical.component';
+import {WellnessComponent} from './wellness.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: MedicalComponent,
+    component: WellnessComponent,
     // canActivate: [NonAuthGuard]
   },
 ];
@@ -15,4 +15,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class MedicalRoutingModule {}
+export class WellnessRoutingModule {}
