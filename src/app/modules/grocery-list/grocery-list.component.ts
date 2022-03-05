@@ -37,14 +37,14 @@ export class GroceryListComponent implements OnInit {
         description: 'Miller Lite Beer',
         cost: 19.99,
         store: 'Walmart',
-        pickedUp: false,
+        pickedUp: true,
       },
       {
         count: 1,
         description: 'Chips',
         cost: 2.99,
         store: 'Walmart',
-        pickedUp: false,
+        pickedUp: true,
       },
       {
         count: 1,
@@ -79,7 +79,7 @@ export class GroceryListComponent implements OnInit {
         description: 'Eggs',
         cost: 3.49,
         store: 'Costco',
-        pickedUp: false,
+        pickedUp: true,
       },
       {
         count: 2,
@@ -103,6 +103,8 @@ export class GroceryListComponent implements OnInit {
         pickedUp: false,
       },
     ];
+
+    this.selectedProducts = this.groceries.filter((x) => x.pickedUp === true);
   }
 
   openNew() {

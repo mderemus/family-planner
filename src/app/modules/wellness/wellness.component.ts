@@ -17,10 +17,28 @@ export class WellnessComponent implements OnInit {
     this.wellness = [];
     this.wellness = [
       {
-        reminder: 'Miller Lite Beer',
-        to: 'Dad',
-        email: 'dad@test.com',
+        type: 'Multi-Vitamin',
+        familyMember: 'Dad',
+        note: 'Take 2 a day',
         date: '03/01/2022',
+      },
+      {
+        type: 'Prescription',
+        familyMember: 'Mom',
+        note: 'Two rxs daily for HBP',
+        date: '01/01/2022',
+      },
+      {
+        type: 'PCP',
+        familyMember: 'Dad',
+        note: 'Dr. Gregory 555-333-2222',
+        date: '03/01/2022',
+      },
+      {
+        type: 'Family Pharmacy',
+        familyMember: 'Fam',
+        note: 'CVS 888-333-2222',
+        date: '02/01/2022',
       },
     ];
   }

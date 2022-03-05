@@ -7,6 +7,7 @@ import {Component, OnInit} from '@angular/core';
 })
 export class ParentTodoComponent implements OnInit {
   parentTodo: any[] = [];
+  selectedTodo: any[];
 
   constructor() {}
 
@@ -19,13 +20,13 @@ export class ParentTodoComponent implements OnInit {
     this.parentTodo = [
       {
         priority: 1,
-        description: 'Miller Lite Beer',
+        description: 'Take out Trash',
         done: false,
       },
       {
         priority: 4,
         description: 'Clean Shed',
-        done: false,
+        done: true,
       },
       {
         priority: 3,
@@ -33,5 +34,6 @@ export class ParentTodoComponent implements OnInit {
         done: false,
       },
     ];
+    this.selectedTodo = this.parentTodo.filter((x) => x.done === true);
   }
 }

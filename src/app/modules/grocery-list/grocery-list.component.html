@@ -4,6 +4,7 @@
       <span class="fs-4">Grocery List</span>
       <form class="col-12 col-lg-auto mb-3 mb-lg-0">
         <input
+          (input)="dtGroceries.filterGlobal($event.target.value, 'contains')"
           type="search"
           class="form-control"
           placeholder="Search..."
@@ -12,9 +13,18 @@
       </form>
     </div>
   </header>
-  <p-table [value]="groceries">
+  <p-table
+    #dtGroceries
+    [value]="groceries"
+    [(selection)]="selectedProducts"
+    [globalFilterFields]="['count', 'description', 'cost', 'store']"
+    dataKey="pickedUp"
+  >
     <ng-template pTemplate="header">
       <tr>
+        <th style="width: 3rem">
+          <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+        </th>
         <th>Count</th>
         <th>Description</th>
         <th>Cost</th>
@@ -23,6 +33,9 @@
     </ng-template>
     <ng-template pTemplate="body" let-groc>
       <tr>
+        <td>
+          <p-tableCheckbox [value]="groc"></p-tableCheckbox>
+        </td>
         <td>{{ groc.count }}</td>
         <td>{{ groc.description }}</td>
         <td>${{ groc.cost }}</td>

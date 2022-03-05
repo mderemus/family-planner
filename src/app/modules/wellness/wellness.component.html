@@ -4,6 +4,7 @@
       <span class="fs-4">Family Wellness</span>
       <form class="col-12 col-lg-auto mb-3 mb-lg-0">
         <input
+          (input)="dtWellness.filterGlobal($event.target.value, 'contains')"
           type="search"
           class="form-control"
           placeholder="Search..."
@@ -12,20 +13,24 @@
       </form>
     </div>
   </header>
-  <p-table [value]="wellness">
+  <p-table
+    #dtWellness
+    [value]="wellness"
+    [globalFilterFields]="['type', 'familyMember', 'note', 'date']"
+  >
     <ng-template pTemplate="header">
       <tr>
-        <th>Reminder</th>
-        <th>To</th>
-        <th>Email</th>
+        <th>Type</th>
+        <th>Family Member</th>
+        <th>Note</th>
         <th>Date</th>
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-wellness>
       <tr>
-        <td>{{ wellness.reminder }}</td>
-        <td>{{ wellness.to }}</td>
-        <td>{{ wellness.email }}</td>
+        <td>{{ wellness.type }}</td>
+        <td>{{ wellness.familyMember }}</td>
+        <td>{{ wellness.note }}</td>
         <td>{{ wellness.date }}</td>
       </tr>
     </ng-template>

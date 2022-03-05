@@ -1,8 +1,11 @@
 <div class="container px-4 gx-5">
-  <p-table [value]="kidTodo">
+  <p-table [value]="kidTodo" [(selection)]="selectedTodo" dataKey="done">
     <ng-template pTemplate="caption"> Kids </ng-template>
     <ng-template pTemplate="header">
       <tr>
+        <th style="width: 3rem">
+          <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+        </th>
         <th>Description</th>
         <th>Priority</th>
         <th>Done</th>
@@ -10,9 +13,12 @@
     </ng-template>
     <ng-template pTemplate="body" let-todo>
       <tr>
+        <td>
+          <p-tableCheckbox [value]="todo"></p-tableCheckbox>
+        </td>
         <td>{{ todo.description }}</td>
         <td>{{ todo.priority }}</td>
-        <td>{{ todo.done === 'true' ? 'Yes' : 'No' }}</td>
+        <td>{{ todo.done === true ? 'Yes' : 'No' }}</td>
       </tr>
     </ng-template>
   </p-table>
