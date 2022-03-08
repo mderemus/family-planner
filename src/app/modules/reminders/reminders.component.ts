@@ -17,10 +17,22 @@ export class RemindersComponent implements OnInit {
     this.reminders = [];
     this.reminders = [
       {
-        reminder: 'Miller Lite Beer',
+        reminder: 'Pick up Katy after practice @ 4pm',
         to: 'Dad',
         email: 'dad@test.com',
         date: '03/01/2022',
+      },
+      {
+        reminder: 'Buy filter at store',
+        to: 'Dad',
+        email: 'dad@test.com',
+        date: '03/10/2022',
+      },
+      {
+        reminder: 'Book beach vacation',
+        to: 'Mom',
+        email: 'mom@test.com',
+        date: '06/01/2022',
       },
     ];
   }

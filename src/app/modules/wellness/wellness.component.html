@@ -13,26 +13,33 @@
       </form>
     </div>
   </header>
-  <p-table
-    #dtWellness
-    [value]="wellness"
-    [globalFilterFields]="['type', 'familyMember', 'note', 'date']"
-  >
-    <ng-template pTemplate="header">
-      <tr>
-        <th>Type</th>
-        <th>Family Member</th>
-        <th>Note</th>
-        <th>Date</th>
-      </tr>
-    </ng-template>
-    <ng-template pTemplate="body" let-wellness>
-      <tr>
-        <td>{{ wellness.type }}</td>
-        <td>{{ wellness.familyMember }}</td>
-        <td>{{ wellness.note }}</td>
-        <td>{{ wellness.date }}</td>
-      </tr>
-    </ng-template>
-  </p-table>
+
+  <p-accordion>
+    <p-accordionTab header="Doctor's">
+      <p-table
+        #dtWellness
+        [value]="wellness"
+        [globalFilterFields]="['type', 'familyMember', 'note', 'date']"
+      >
+        <ng-template pTemplate="header">
+          <tr>
+            <th>Type</th>
+            <th>Family Member</th>
+            <th>Note</th>
+            <th>Date</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-wellness>
+          <tr>
+            <td>{{ wellness.type }}</td>
+            <td>{{ wellness.familyMember }}</td>
+            <td>{{ wellness.note }}</td>
+            <td>{{ wellness.date }}</td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </p-accordionTab>
+    <p-accordionTab header="Prescriptions"> Content 2 </p-accordionTab>
+    <p-accordionTab header="Allergies"> Content 3 </p-accordionTab>
+  </p-accordion>
 </div>

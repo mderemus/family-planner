@@ -4,6 +4,7 @@ import {ConfirmationService} from 'primeng/api';
 import {MessageService} from 'primeng/api';
 import {GroceryService} from '@/shared/services/grocery/grocery.service';
 import {GroceryList, GroceryListItem} from '@/shared/models/grocery/grocery';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-grocery-list',
@@ -13,14 +14,14 @@ import {GroceryList, GroceryListItem} from '@/shared/models/grocery/grocery';
 })
 export class GroceryListComponent implements OnInit {
   productDialog: boolean;
-  groceries: any[] = [];
+  groceries$: Observable<any>;
   groceryItem: GroceryListItem;
   selectedProducts: GroceryList[];
   submitted: boolean;
   statuses: any[];
 
   constructor(
-    private productService: GroceryService,
+    private groceryService: GroceryService,
     private messageService: MessageService,
     private confirmationService: ConfirmationService,
   ) {}
@@ -30,81 +31,10 @@ export class GroceryListComponent implements OnInit {
   }
 
   loadGroceries() {
-    this.groceries = [];
-    this.groceries = [
-      {
-        count: 1,
-        description: 'Miller Lite Beer',
-        cost: 19.99,
-        store: 'Walmart',
-        pickedUp: true,
-      },
-      {
-        count: 1,
-        description: 'Chips',
-        cost: 2.99,
-        store: 'Walmart',
-        pickedUp: true,
-      },
-      {
-        count: 1,
-        description: 'Hamburger Buns',
-        cost: 1.99,
-        store: 'Walmart',
-        pickedUp: false,
-      },
-      {
-        count: 2,
-        description: 'TV Dinners',
-        cost: 3.99,
-        store: 'Walmart',
-        pickedUp: false,
-      },
-      {
-        count: 2,
-        description: 'Brocolli',
-        cost: 0.99,
-        store: 'Walmart',
-        pickedUp: false,
-      },
-      {
-        count: 6,
-        description: 'Corn',
-        cost: 0.39,
-        store: 'Walmart',
-        pickedUp: false,
-      },
-      {
-        count: 1,
-        description: 'Eggs',
-        cost: 3.49,
-        store: 'Costco',
-        pickedUp: true,
-      },
-      {
-        count: 2,
-        description: 'Bacon',
-        cost: 8.99,
-        store: 'Costco',
-        pickedUp: false,
-      },
-      {
-        count: 3,
-        description: 'Wine',
-        cost: 9.99,
-        store: 'Target',
-        pickedUp: false,
-      },
-      {
-        count: 1,
-        description: 'Pulled Pork',
-        cost: 5.99,
-        store: 'Target',
-        pickedUp: false,
-      },
-    ];
-
-    this.selectedProducts = this.groceries.filter((x) => x.pickedUp === true);
+    this.groceries$ = this.groceryService.getGroceries();
+    this.selectedProducts = this.groceryService.groceries.filter(
+      (x) => x.pickedUp === true,
+    );
   }
 
   openNew() {

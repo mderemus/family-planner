@@ -15,7 +15,7 @@
   </header>
   <p-table
     #dtGroceries
-    [value]="groceries"
+    [value]="groceries$ | async"
     [(selection)]="selectedProducts"
     [globalFilterFields]="['count', 'description', 'cost', 'store']"
     dataKey="pickedUp"
