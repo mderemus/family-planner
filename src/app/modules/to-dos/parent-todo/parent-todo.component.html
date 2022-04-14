@@ -6,9 +6,15 @@
         <th style="width: 3rem">
           <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
         </th>
-        <th>Description</th>
-        <th>Priority</th>
-        <th>Done</th>
+        <th pSortableColumn="description">
+          Description<p-sortIcon field="description"></p-sortIcon>
+        </th>
+        <th pSortableColumn="priority">
+          Priority<p-sortIcon field="priority"></p-sortIcon>
+        </th>
+        <th pSortableColumn="done">
+          Done<p-sortIcon field="done"></p-sortIcon>
+        </th>
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-todo>
